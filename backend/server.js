@@ -19,12 +19,12 @@ app.post('/products', async (req, res) => {
         return res.status(400).json({error: 'Name is required'});
     }
 
-    if (quantity < 0) {
-        return res.status(400).json({error: 'Quantity cannot be negative'});
+    if (quantity === undefined || quantity < 0) {
+        return res.status(400).json({error: 'Quantity must be 0 or greater'});
     }
 
-    if (price < 0) {
-        return res.status(400).json({error: 'Price cannot be negative'});
+    if (price === undefined || price < 0) {
+        return res.status(400).json({error: 'Price must be 0 or greater'});
     }
 
     let status;
@@ -54,12 +54,12 @@ app.patch('/products/:id', async (req, res) => {
     if (!name) {
         return res.status(400).json({error: 'Name is required'});
     }
-    if (quantity < 0) {
-        return res.status(400).json({error: 'Quantity cannot be negative'});
+    if (quantity === undefined || quantity < 0) {
+        return res.status(400).json({error: 'Quantity must be 0 or greater'});
     }
 
-    if (price < 0) {
-        return res.status(400).json({error: 'Price cannot be negative'});
+    if (price === undefined || price < 0) {
+        return res.status(400).json({error: 'Price must be 0 or greater'});
     }
 
     let status;
