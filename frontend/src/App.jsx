@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 function StatusBadge({status}) {
   return (
     <span className={`status status-${status}`}>
-      {status.replace('_', ' ')}
+      {status.replaceAll('_', ' ')}
     </span>
   )
 }
@@ -125,7 +125,7 @@ function App() {
       {error && <p>{error}</p>}
 
       <table>
-        <thread>
+        <thead>
           <tr>
             <th>Name</th>
             <th>Quantity</th>
@@ -133,7 +133,7 @@ function App() {
             <th>Status</th>
             <th>Actions</th>
           </tr>
-        </thread>
+        </thead>
 
         <tbody>
           {products.map((product) => (
@@ -156,7 +156,7 @@ function App() {
         </tbody>
       </table>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="product-form">
           <input 
             type="text"
             placeholder="Product name"
@@ -188,7 +188,7 @@ function App() {
       </form>
 
       {editingProduct && (
-        <form onSubmit={handleEditSubmit}>
+        <form onSubmit={handleEditSubmit} className="product-form">
           <h2>Edit product</h2>
 
           <input

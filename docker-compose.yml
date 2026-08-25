@@ -7,3 +7,17 @@ services:
             POSTGRES_DB: inventory_db
         ports:
             - "5432:5432"
+
+    backend:
+        build: ./backend
+        ports:
+            - "4000:4000"
+        depends_on:
+            - postgres
+
+    frontend:
+        build: ./frontend
+        ports:
+            - "5173:5173"
+        depends_on:
+            - backend
